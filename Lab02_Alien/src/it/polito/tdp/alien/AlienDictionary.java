@@ -34,6 +34,17 @@ public class AlienDictionary {
 		if ( mappa.containsKey(alienWord.toLowerCase() )) {
 			return mappa.get(alienWord).getTranslation().toLowerCase();
 		}
+		else if ( alienWord.contains("?") ) {
+			StringTokenizer st = new StringTokenizer(alienWord,"?");
+			String s1 = st.nextToken();
+			String s2 = st.nextToken();
+			
+			for ( String s3 : mappa.keySet() ) {
+				if ( s3.contains(s1) && s2.contains(s2) )
+					return mappa.get(s3).getTranslation().toLowerCase();
+			}
+			return null;
+		}
 		else
 			return null;
 	}
