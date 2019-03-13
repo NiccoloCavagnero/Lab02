@@ -51,13 +51,13 @@ void doTranslate(ActionEvent event) {
     		String alienWord = st.nextToken();
     		String translation = st.nextToken();
     		
-    		if ( alienWord.matches("[a-zA-Z+?]+") && translation.matches("[a-zA-Z+?]+") )
+    		if ( alienWord.matches("[a-zA-Z[?]]+") && translation.matches("[a-zA-Z[?]]+") )
     		   A.addWord(alienWord, translation);
     		else
     			txtResult.appendText("\nCarattere non valido: sono possibili solo caratteri alfabetici!");
     	}
     	else {
-    		if ( !txtWord.getText().matches("[a-zA-Z+?]+") )
+    		if ( !txtWord.getText().matches("[a-zA-Z[?]]+") )
     		    txtResult.appendText("\nCarattere non valido: Sono possibili solo caratteri alfabetici!");
     		else if ( A.translateWord(txtWord.getText()) == null ) 
     			txtResult.appendText("\nTraduzione non trovata.");	

@@ -35,15 +35,35 @@ public class AlienDictionary {
 			return mappa.get(alienWord).getTranslation().toLowerCase();
 		}
 		else if ( alienWord.contains("?") ) {
-			StringTokenizer st = new StringTokenizer(alienWord,"?");
-			String s1 = st.nextToken();
-			String s2 = st.nextToken();
 			
-			for ( String s3 : mappa.keySet() ) {
-				if ( s3.contains(s1) && s2.contains(s2) )
-					return mappa.get(s3).getTranslation().toLowerCase();
+			LinkedList<Word> lista = new LinkedList<Word>();
+			String[] sp = alienWord.split("[?]");
+			
+			if ( sp.length == 2 ) {
+			  String s1 = sp[0];
+			  String s2 = sp[1];
+			
+			  for ( String s3 : mappa.keySet() ) 
+			  	  if ( s3.contains(s1) && s2.contains(s2) )
+					   lista.add(mappa.get(s3));
+			  
 			}
-			return null;
+			else {
+				  for ( String s3 : mappa.keySet() ) 
+				  	  if ( s3.contains(sp[0]) )
+						   lista.add(mappa.get(s3));
+			}
+			
+			if ( lista.size() == 0 )
+			    return null;
+			else if ( lista.size() == 1 )
+				 return lista.get(0).getTranslation();
+			else {
+				String s = "Possibili matches multipli:";
+				for ( Word w : lista )
+					s += "\n"+w.getTranslation();
+				return s;
+			}
 		}
 		else
 			return null;
