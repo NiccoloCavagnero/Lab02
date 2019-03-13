@@ -51,18 +51,20 @@ public class AlienController {
     		String alienWord = st.nextToken();
     		String translation = st.nextToken();
     		
-    		if ( alienWord.matches("[a-zA-Z]+") && translation.matches("[a-zA-Z]+") )
+    		if ( alienWord.matches("[a-zA-Z]+") && translation.matches("[a-zA-Z]+") ) {
     		   A.addWord(alienWord, translation);
+    		   txtResult.appendText("\nParola e traduzione aggiunte con successo al dizionario!");
+    		}
     		else
-    			txtResult.setText("Carattere non valido: sono possibili solo caratteri alfabetici!");
+    			txtResult.appendText("\nCarattere non valido: sono possibili solo caratteri alfabetici!");
     	}
     	else {
     		if ( !txtWord.getText().matches("[a-zA-Z]+") )
-    		    txtResult.setText("Carattere non valido: Sono possibili solo caratteri alfabetici!");
+    		    txtResult.appendText("\nCarattere non valido: Sono possibili solo caratteri alfabetici!");
     		else if ( A.translateWord(txtWord.getText()) == null ) 
-    			txtResult.setText("Traduzione non trovata.");	
+    			txtResult.appendText("\nTraduzione non trovata.");	
     		else
-    			txtResult.setText(A.translateWord(txtWord.getText()));
+    			txtResult.appendText("\n"+A.translateWord(txtWord.getText()));
     	}
 	   txtWord.clear();	
     }
@@ -71,6 +73,7 @@ public class AlienController {
     @FXML
     void doReset(ActionEvent event) {
             txtResult.clear();
+            
     }
     
 }

@@ -59,7 +59,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <TextArea fx:id="txtResult" prefHeight="133.0" text="Welcome to Alien Dictionary v2019">
+            <TextArea fx:id="txtResult" prefHeight="133.0" text="Welcome to Alien Dictionary v2019.&#10;">
                <font>
                   <Font name="Andale Mono" size="12.0" />
                </font>
