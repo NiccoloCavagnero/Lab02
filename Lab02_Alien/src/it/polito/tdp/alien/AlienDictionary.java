@@ -32,7 +32,7 @@ public class AlienDictionary {
 	public String translateWord(String alienWord) {
 		
 		if ( mappa.containsKey(alienWord.toLowerCase() )) {
-			return mappa.get(alienWord).getTranslation().toLowerCase();
+			return mappa.get(alienWord.toLowerCase()).getTranslation().toLowerCase();
 		}
 		else
 			return null;
