@@ -8,6 +8,7 @@ package it.polito.tdp.alien;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,16 +41,32 @@ public class AlienController {
     	
     }
   
+    AlienDictionary A = new AlienDictionary();
     
     @FXML
     void doTranslate(ActionEvent event) {
-    	    	
+    	
+    	
+    	if ( txtWord.getText().contains(" ") ) {
+    		StringTokenizer st = new StringTokenizer(txtWord.getText()," ");
+    		String alienWord = st.nextToken();
+    		String translation = st.nextToken();
+    		
+    		A.addWord(alienWord, translation);
+    	}
+    	else {
+    		if ( A.translateWord(txtWord.getText()) == null ) 
+    			txtResult.setText("Traduzione non trovata.");
+    		else
+    			txtResult.setText(A.translateWord(txtWord.getText()));
+    	}
+    	txtWord.clear();
     }
     
     
     @FXML
     void doReset(ActionEvent event) {
-
+            txtResult.clear();
     }
     
 }
