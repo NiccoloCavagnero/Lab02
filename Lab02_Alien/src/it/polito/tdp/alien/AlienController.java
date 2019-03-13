@@ -44,23 +44,27 @@ public class AlienController {
     AlienDictionary A = new AlienDictionary();
     
     @FXML
-    void doTranslate(ActionEvent event) {
+void doTranslate(ActionEvent event) {
     	
-    	
-    	if ( txtWord.getText().contains(" ") ) {
+    	if ( txtWord.getText().contains(" ")  ) {
     		StringTokenizer st = new StringTokenizer(txtWord.getText()," ");
     		String alienWord = st.nextToken();
     		String translation = st.nextToken();
     		
-    		A.addWord(alienWord, translation);
+    		if ( alienWord.matches("[a-zA-Z]+") && translation.matches("[a-zA-Z]+") )
+    		   A.addWord(alienWord, translation);
+    		else
+    			txtResult.setText("Carattere non valido: sono possibili solo caratteri alfabetici!");
     	}
     	else {
-    		if ( A.translateWord(txtWord.getText()) == null ) 
-    			txtResult.setText("Traduzione non trovata.");
+    		if ( !txtWord.getText().matches("[a-zA-Z]+") )
+    		    txtResult.setText("Carattere non valido: Sono possibili solo caratteri alfabetici!");
+    		else if ( A.translateWord(txtWord.getText()) == null ) 
+    			txtResult.setText("Traduzione non trovata.");	
     		else
     			txtResult.setText(A.translateWord(txtWord.getText()));
     	}
-    	txtWord.clear();
+	   txtWord.clear();	
     }
     
     
@@ -70,3 +74,4 @@ public class AlienController {
     }
     
 }
+

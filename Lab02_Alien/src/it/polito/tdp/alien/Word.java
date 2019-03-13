@@ -29,7 +29,7 @@ public class Word {
 	
 	public boolean equals( Object obj) {
 		
-		if ( this.alienWord.compareTo(obj.toString().toLowerCase()) == 0 )
+		if ( this.alienWord.compareTo(((Word)obj).getAlienWord().toLowerCase()) == 0 )
 			return true;
 		else 
 		    return false;
