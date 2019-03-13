@@ -47,7 +47,7 @@ public class AlienController {
 void doTranslate(ActionEvent event) {
     	
     	if ( txtWord.getText().contains(" ")  ) {
-    		StringTokenizer st = new StringTokenizer(txtWord.getText()," ");
+    		StringTokenizer st = new StringTokenizer(txtWord.getText().toLowerCase()," ");
     		String alienWord = st.nextToken();
     		String translation = st.nextToken();
     		
@@ -62,7 +62,7 @@ void doTranslate(ActionEvent event) {
     		else if ( A.translateWord(txtWord.getText()) == null ) 
     			txtResult.appendText("\nTraduzione non trovata.");	
     		else
-    			txtResult.appendText("\n"+A.translateWord(txtWord.getText()));
+    			txtResult.appendText("\n"+A.translateWord(txtWord.getText().toLowerCase()));
     	}
 	   txtWord.clear();	
     }

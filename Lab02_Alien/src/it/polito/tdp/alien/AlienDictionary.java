@@ -32,12 +32,12 @@ public class AlienDictionary {
 	public String translateWord(String alienWord) {
 		
 		if ( mappa.containsKey(alienWord.toLowerCase() )) {
-			return mappa.get(alienWord).getTranslation().toLowerCase();
+			return mappa.get(alienWord.toLowerCase()).getTranslation().toLowerCase();
 		}
 		else if ( alienWord.contains("?") ) {
 			
 			LinkedList<Word> lista = new LinkedList<Word>();
-			String[] sp = alienWord.split("[?]");
+			String[] sp = alienWord.toLowerCase().split("[?]");
 			
 			if ( sp.length == 2 ) {
 			  String s1 = sp[0];
