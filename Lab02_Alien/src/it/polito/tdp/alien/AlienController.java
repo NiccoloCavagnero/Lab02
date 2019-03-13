@@ -54,15 +54,15 @@ void doTranslate(ActionEvent event) {
     		if ( alienWord.matches("[a-zA-Z]+") && translation.matches("[a-zA-Z]+") )
     		   A.addWord(alienWord, translation);
     		else
-    			txtResult.setText("Carattere non valido: sono possibili solo caratteri alfabetici!");
+    			txtResult.appendText("\nCarattere non valido: sono possibili solo caratteri alfabetici!");
     	}
     	else {
     		if ( !txtWord.getText().matches("[a-zA-Z]+") )
-    		    txtResult.setText("Carattere non valido: Sono possibili solo caratteri alfabetici!");
+    		    txtResult.appendText("\nCarattere non valido: Sono possibili solo caratteri alfabetici!");
     		else if ( A.translateWord(txtWord.getText()) == null ) 
-    			txtResult.setText("Traduzione non trovata.");	
+    			txtResult.appendText("\nTraduzione non trovata.");	
     		else
-    			txtResult.setText(A.translateWord(txtWord.getText()));
+    			txtResult.appendText("\n"+A.translateWord(txtWord.getText()));
     	}
 	   txtWord.clear();	
     }
